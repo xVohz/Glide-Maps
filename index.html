@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.6px Menlo; color: #3f4862; -webkit-text-stroke: #3f4862; background-color: #101117}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.6px Menlo; color: #5d7ba5; -webkit-text-stroke: #5d7ba5; background-color: #101117}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.6px Menlo; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #101117}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.6px Menlo; color: #66a4b8; -webkit-text-stroke: #66a4b8; background-color: #101117}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.6px Menlo; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #101117; min-height: 15.0px}
+    span.s1 {font-kerning: none; color: #5d7ba5; -webkit-text-stroke: 0px #5d7ba5}
+    span.s2 {font-kerning: none}
+    span.s3 {font-kerning: none; color: #ffffff; -webkit-text-stroke: 0px #ffffff}
+    span.s4 {font-kerning: none; color: #82a666; -webkit-text-stroke: 0px #82a666}
+    span.s5 {font-kerning: none; color: #66a4b8; -webkit-text-stroke: 0px #66a4b8}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!</span><span class="s2">DOCTYPE html</span><span class="s1">&gt;</span></p>
+<p class="p2"><span class="s2">&lt;html&gt;</span></p>
+<p class="p2"><span class="s2">&lt;head&gt;</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">  </span></span><span class="s1">&lt;title&gt;</span><span class="s2">Navigazione integrata</span><span class="s1">&lt;/title&gt;</span></p>
+<p class="p4"><span class="s3"><span class="Apple-converted-space">  </span></span><span class="s1">&lt;script </span><span class="s4">src</span><span class="s1">="</span><span class="s2">https://maps.googleapis.com/maps/api/js?key=AIzaSyBQIbl7MVB3_EeSSWPbOJWKTizd6CSbJE4</span><span class="s1">"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s3"><span class="Apple-converted-space">  </span></span><span class="s2">&lt;script&gt;</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>let map;</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>let directionsService;</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>let directionsRenderer;</span></p>
+<p class="p5"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>function initMap() {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>map = new google.maps.Map(document.getElementById('map'), {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>zoom: 7,</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>center: { lat: 41.9028, lng: 12.4964 } // Centra la mappa sull'Italia</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>});</span></p>
+<p class="p5"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>directionsService = new google.maps.DirectionsService();</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>directionsRenderer = new google.maps.DirectionsRenderer();</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>directionsRenderer.setMap(map);</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p5"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>function calculateAndDisplayRoute(start, end) {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>directionsService.route(</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>{</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">          </span>origin: start,</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">          </span>destination: end,</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">          </span>travelMode: google.maps.TravelMode.DRIVING,</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>},</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>(response, status) =&gt; {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">          </span>if (status === 'OK') {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">            </span>directionsRenderer.setDirections(response);</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">          </span>} else {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">            </span>alert('Impossibile calcolare il percorso: ' + status);</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">          </span>}</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>);</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p5"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>// Funzione per ricevere i dati da Glide</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>window.receiveData = function(start, end) {</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">      </span>calculateAndDisplayRoute(start, end);</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s3"><span class="Apple-converted-space">  </span></span><span class="s2">&lt;/script&gt;</span></p>
+<p class="p2"><span class="s2">&lt;/head&gt;</span></p>
+<p class="p2"><span class="s2">&lt;body </span><span class="s4">onload</span><span class="s2">="</span><span class="s5">initMap()</span><span class="s2">"&gt;</span></p>
+<p class="p4"><span class="s3"><span class="Apple-converted-space">  </span></span><span class="s1">&lt;div </span><span class="s4">id</span><span class="s1">="</span><span class="s2">map</span><span class="s1">" </span><span class="s4">style</span><span class="s1">="</span><span class="s2">height: 100vh; width: 100%;</span><span class="s1">"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s2">&lt;/body&gt;</span></p>
+<p class="p2"><span class="s2">&lt;/html&gt;</span></p>
+</body>
+</html>
